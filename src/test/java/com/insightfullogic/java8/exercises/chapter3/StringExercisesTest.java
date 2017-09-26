@@ -28,7 +28,7 @@ public class StringExercisesTest {
 
     @Test
     public void noStringReturnedForEmptyList() {
-        assertFalse(StringExercises.mostLowercaseString(Collections.<String>emptyList()).isPresent());
+        assertFalse(StringExercises.mostLowercaseString(Collections.emptyList()).isPresent());
     }
 
     @Test
