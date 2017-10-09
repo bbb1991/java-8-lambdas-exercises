@@ -3,6 +3,7 @@ package com.insightfullogic.java8.exercises.chapter4;
 import com.insightfullogic.java8.examples.chapter1.Artist;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Artists {
 
@@ -13,14 +14,21 @@ public class Artists {
     }
 
     public Artist getArtist(int index) {
+        Optional<Artist> optional;
         if (index < 0 || index >= artists.size()) {
+            optional = Optional.empty();
+        } else {
+            optional = Optional.of(artists.get(index));
+        }
+
+        if (!optional.isPresent()) {
             indexException(index);
         }
-        return artists.get(index);
+        return optional.get();
     }
 
     private void indexException(int index) {
-        throw new IllegalArgumentException(index + 
+        throw new IllegalArgumentException(index +
                                            " doesn't correspond to an Artist");
     }
 
